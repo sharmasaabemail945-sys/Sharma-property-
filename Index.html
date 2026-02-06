@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sharma Property Advisor</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#0f2027;
+color:white;
+}
+
+.container{
+max-width:420px;
+margin:auto;
+background:#1b2b34;
+min-height:100vh;
+padding-bottom:100px;
+}
+
+header{
+text-align:center;
+padding:20px;
+background:#13232f;
+}
+
+.location{
+font-size:13px;
+color:#90caf9;
+}
+
+/* PROPERTY */
+.properties{
+padding:15px;
+display:grid;
+gap:15px;
+}
+
+.card{
+background:#223a46;
+border-radius:12px;
+overflow:hidden;
+padding-bottom:10px;
+}
+
+.card img{
+width:100%;
+height:160px;
+object-fit:cover;
+}
+
+.card h3{
+padding:10px;
+margin:0;
+}
+
+/* REVIEWS */
+.reviews{
+padding:15px;
+display:grid;
+gap:15px;
+}
+
+.review-card{
+background:#223a46;
+padding:15px;
+border-radius:10px;
+}
+
+/* FAQ */
+.faq{
+padding:15px;
+}
+
+.faq-item{
+background:#223a46;
+margin-bottom:10px;
+padding:10px;
+border-radius:8px;
+}
+
+/* FLOAT BUTTONS */
+.float-btn{
+position:fixed;
+right:20px;
+width:65px;
+height:65px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:28px;
+cursor:pointer;
+color:white;
+box-shadow:0 6px 18px rgba(0,0,0,0.4);
+animation:pulse 1.5s infinite;
+}
+
+.call-btn{
+bottom:110px;
+background:#ff5722;
+}
+
+.whatsapp-btn{
+bottom:30px;
+background:#25D366;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.15);}
+100%{transform:scale(1);}
+}
+
+/* POPUP */
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:flex;
+justify-content:center;
+align-items:center;
+visibility:hidden;
+}
+
+.popup-box{
+background:white;
+color:black;
+padding:30px;
+border-radius:12px;
+text-align:center;
+animation:zoom 0.4s;
+}
+
+@keyframes zoom{
+from{transform:scale(0.5);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+/* CHATBOT */
+.chatbot{
+position:fixed;
+bottom:20px;
+left:20px;
+width:260px;
+background:#223a46;
+border-radius:12px;
+padding:10px;
+display:none;
+}
+
+.chatbot input{
+width:100%;
+padding:8px;
+margin-top:8px;
+border:none;
+border-radius:6px;
+}
+
+.chat-btn{
+position:fixed;
+bottom:20px;
+left:20px;
+background:#ff9800;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:26px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+<h2>Sharma Property Advisor</h2>
+<div class="location">Service Area: Punjab, Jalandhar</div>
+</header>
+
+<!-- PROPERTY -->
+<div class="properties">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c">
+<h3>Luxury Villa ₹65 Lakh</h3>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994">
+<h3>Rental House ₹12,000</h3>
+</div>
+
+</div>
+
+<!-- REVIEWS -->
+<h3 style="padding-left:15px;">Customer Reviews</h3>
+
+<div class="reviews">
+<div class="review-card">
+<b>Rahul Sharma</b><br>
+⭐⭐⭐⭐⭐ (4.9)
+<p>Very trusted advisor.</p>
+</div>
+
+<div class="review-card">
+<b>Neha Verma</b><br>
+⭐⭐⭐⭐ (4.7)
+<p>Fast rental service.</p>
+</div>
+</div>
+
+<!-- FAQ -->
+<h3 style="padding-left:15px;">FAQ</h3>
+
+<div class="faq">
+<div class="faq-item">
+<b>Do you provide rental properties?</b>
+<p>Yes we provide houses & commercial rentals.</p>
+</div>
+</div>
+
+</div>
+
+<!-- FLOAT CALL -->
+<div class="float-btn call-btn" onclick="openPopup()">📞</div>
+
+<!-- FLOAT WHATSAPP -->
+<div class="float-btn whatsapp-btn" onclick="openWhatsapp()">💬</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+<div class="popup-box">
+<h3>Contact Sharma Property Advisor</h3>
+<p>📞 9781835760</p>
+<br>
+<button onclick="callNow()">Call Now</button>
+<br><br>
+<button onclick="closePopup()">Close</button>
+</div>
+</div>
+
+<!-- CHATBOT -->
+<div class="chatbot" id="chatbox">
+<div id="chatlog">👋 Ask property details</div>
+<input type="text" placeholder="Type..." onkeydown="chat(event)">
+</div>
+
+<div class="chat-btn" onclick="toggleChat()">🤖</div>
+
+<script>
+
+/* POPUP */
+function openPopup(){
+document.getElementById("popup").style.visibility="visible";
+}
+
+function closePopup(){
+document.getElementById("popup").style.visibility="hidden";
+}
+
+function callNow(){
+window.location="tel:9781835760";
+}
+
+function openWhatsapp(){
+window.open("https://wa.me/919781835760");
+}
+
+/* CHATBOT */
+function toggleChat(){
+let box=document.getElementById("chatbox");
+box.style.display= box.style.display=="block"?"none":"block";
+}
+
+function chat(e){
+if(e.key==="Enter"){
+let input=e.target.value.toLowerCase();
+let reply="Please call 9781835760";
+
+if(input.includes("rent"))
+reply="Rental homes available from ₹8000";
+
+if(input.includes("buy")||input.includes("sale"))
+reply="We provide verified property deals";
+
+document.getElementById("chatlog").innerHTML += "<br>You: "+input+"<br>Bot: "+reply;
+e.target.value="";
+}
+}
+
+</script>
+
+</body>
+</html>
